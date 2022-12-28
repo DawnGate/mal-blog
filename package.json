@@ -1,0 +1,25 @@
+{
+  "name": "mal-blog",
+  "version": "1.0.0",
+  "description": "Blog of Lam",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "kr4k9n",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-config-next": "^13.1.1",
+    "prettier": "2.8.1"
+  }
+}

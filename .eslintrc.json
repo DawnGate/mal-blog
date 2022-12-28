@@ -1,0 +1,10 @@
+{
+  // specifiy where the eslintrc will working
+  "root": true,
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-unused-vars": "error",
+    "semi": "off",
+    "react/display-name": "off"
+  }
+}
