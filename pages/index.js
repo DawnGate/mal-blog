@@ -11,4 +11,4 @@ const HomePage = () => {
 }
 
 export default HomePage
-export { getServerSideProps } from '../components/chakaui'
+export { getServerSideProps } from '../components/chakraui'
