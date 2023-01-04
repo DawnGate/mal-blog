@@ -7,7 +7,7 @@ const Footer = () => {
     <Box>
       <Text>
         Made by Lam Nguyen. Contact with me{' '}
-        <Link as={NextLink} href={GITHUB_LINK}>
+        <Link as={NextLink} href={GITHUB_LINK} color="teal.500">
           @lamnguyen
         </Link>
         .

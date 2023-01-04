@@ -9,6 +9,11 @@ const Head = () => {
       <meta name="author" content="LamNguyen" />
       <title>Lam Nguyen - Home Page</title>
       <meta property="og:title" content="Lam Nguyen - Home Page" key="title" />
+      <link
+        rel="icon"
+        type="image/svg+xml"
+        href="/assets/favicons/logo-kraken.svg"
+      />
     </NextHead>
   )
 }
