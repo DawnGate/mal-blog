@@ -1,15 +1,18 @@
-import { IconButton, useColorMode } from '@chakra-ui/react'
+import { Box, IconButton, useColorMode } from '@chakra-ui/react'
 import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 import { AnimatePresence, motion } from 'framer-motion'
 
-const IconAnimation = ({ children, colorMode }) => {
+const IconAnimation = ({ children, color }) => {
   return (
     <AnimatePresence>
       <motion.div
-        key={colorMode}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        key={color}
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0, position: 'absolute' }}
+        exit={{ opacity: 0, x: -20 }}
+        transition={{
+          duration: 0.5,
+        }}
       >
         {children}
       </motion.div>
@@ -19,22 +22,22 @@ const IconAnimation = ({ children, colorMode }) => {
 
 const IconChangeColor = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+
   return (
-    <IconButton
-      onClick={toggleColorMode}
-      aria-label="Change color theme"
-      icon={
-        colorMode === 'dark' ? (
-          <IconAnimation colorMode={colorMode}>
-            <SunIcon />
-          </IconAnimation>
-        ) : (
-          <IconAnimation>
-            <MoonIcon colorMode={colorMode} />
-          </IconAnimation>
-        )
-      }
-    />
+    <Box
+      className="icon-change-theme-color"
+      display="flex"
+      position="relative"
+      width="40px"
+    >
+      <IconAnimation color={colorMode}>
+        <IconButton
+          onClick={toggleColorMode}
+          aria-label="Change color theme"
+          icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
+        />
+      </IconAnimation>
+    </Box>
   )
 }
 
