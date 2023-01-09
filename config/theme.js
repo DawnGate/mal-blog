@@ -15,7 +15,9 @@ const LinkTheme = {
     noUnderline: {
       _hover: {
         textDecoration: 'none',
-        transform: 'scale(1.05, 1.05)',
+      },
+      _visited: {
+        textDecoration: 'none',
       },
     },
   },
