@@ -1,7 +1,12 @@
 import { Text } from '@chakra-ui/react'
+import PageLayout from '../components/pageLayout'
 
 const Posts = () => {
-  return <Text>Posts</Text>
+  return (
+    <PageLayout title="posts">
+      <Text>Posts</Text>
+    </PageLayout>
+  )
 }
 
 export default Posts

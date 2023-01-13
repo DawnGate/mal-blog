@@ -1,8 +1,9 @@
 import { Container } from '@chakra-ui/react'
 import Head from 'next/head'
+import { capitalizeString } from '../utils'
 
 const PageLayout = ({ title, children }) => {
-  const pageTitle = title + ' - Lam Nguyen'
+  const pageTitle = capitalizeString(title) + ' - Lam Nguyen'
   return (
     <Container>
       {title && (
