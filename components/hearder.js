@@ -7,6 +7,7 @@ import {
   Link,
   Text,
 } from '@chakra-ui/react'
+import CustomText from './text'
 import { motion } from 'framer-motion'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -35,7 +36,9 @@ const NavBarItem = ({ title, src, isActive }) => {
   return (
     <Link as={NextLink} href={src} variant="noUnderline">
       <Box padding={2} textTransform="capitalize">
-        <Text fontSize="xl">{title}</Text>
+        <CustomText fontSize="xl" fontWeight={500} active={isActive}>
+          {title}
+        </CustomText>
         {isActive && <Box transitionDuration={'1s'} borderTop="2px"></Box>}
       </Box>
     </Link>

@@ -1,12 +1,11 @@
-import { Box, Button, Text, useColorMode } from '@chakra-ui/react'
+import BioSection from '../components/bio'
+import PageLayout from '../components/pageLayout'
 
 const HomePage = () => {
-  const { toggleColorMode } = useColorMode()
   return (
-    <Box m={3}>
-      <Text>Hello</Text>
-      <Button onClick={toggleColorMode}>Change color</Button>
-    </Box>
+    <PageLayout title="HomePage">
+      <BioSection />
+    </PageLayout>
   )
 }
 

@@ -1,10 +1,10 @@
-import { Text } from '@chakra-ui/react'
+import CardItem from '../components/cardItem'
 import PageLayout from '../components/pageLayout'
 
 const Posts = () => {
   return (
     <PageLayout title="posts">
-      <Text>Posts</Text>
+      <CardItem />
     </PageLayout>
   )
 }
