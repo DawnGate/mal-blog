@@ -1,10 +1,16 @@
-import { Card, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardBody, Image, Link } from '@chakra-ui/react'
+import CustomText from './text'
+import NextLink from 'next/link'
 
-const CardItem = () => {
+const CardItem = ({ imageSrc, imageAlt, linkHref, title }) => {
   return (
     <Card>
-      <CardBody>Helllo</CardBody>
-      <CardFooter>Project name</CardFooter>
+      <CardBody>
+        <Image src={imageSrc} alt={imageAlt} />
+        <Link as={NextLink} href={linkHref}>
+          <CustomText fontWeight={500}>{title}</CustomText>
+        </Link>
+      </CardBody>
     </Card>
   )
 }

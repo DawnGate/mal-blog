@@ -53,8 +53,8 @@ const BioSection = () => {
         <BioHeader title="Hello, My name is Quyen Lam, I'm a computer science engineering" />
         <BioBody
           introduce="Currently, My job is a frontend developer. I'm love to improve product from UI,UX, ... to performance. 
-       With a future become a full-stack developer with a senior knowledge and skill is my target for now. 
-       I love solve problem, learning architecture and avoid problem from learning the failure. 
+       For future I will become a full-stack developer with senior knowledge and more skills. 
+       I love solve problem, learning architecture and avoid problem fron learning after fells. 
         "
         />
       </BioBox>
