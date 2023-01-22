@@ -3,8 +3,8 @@ import PageLayout from '../components/pageLayout'
 
 const Projects = () => {
   return (
-    <PageLayout title="projects">
-      <Text>Projects</Text>
+    <PageLayout title="blog">
+      <Text>Blogs</Text>
     </PageLayout>
   )
 }

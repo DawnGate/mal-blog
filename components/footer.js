@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 
 const Footer = () => {
   return (
-    <Box>
+    <Box marginY={3}>
       <Text>
         Made by Lam Nguyen. Contact with me{' '}
         <Link as={NextLink} href={GITHUB_LINK} color="teal.500">

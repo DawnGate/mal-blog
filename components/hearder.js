@@ -46,7 +46,7 @@ const NavBarItem = ({ title, src, isActive }) => {
 }
 
 const HeaderContent = ({ currentRoute }) => {
-  const routes = ['posts', 'projects']
+  const routes = ['project', 'blog']
   return (
     <HStack paddingX={5} flex={'1'}>
       {routes.map((item) => (

@@ -4,14 +4,14 @@ import NextLink from 'next/link'
 
 const CardItem = ({ imageSrc, imageAlt, linkHref, title }) => {
   return (
-    <Card>
-      <CardBody>
-        <Image src={imageSrc} alt={imageAlt} />
-        <Link as={NextLink} href={linkHref}>
+    <Link as={NextLink} href={linkHref}>
+      <Card>
+        <CardBody>
+          <Image src={imageSrc} alt={imageAlt} />
           <CustomText fontWeight={500}>{title}</CustomText>
-        </Link>
-      </CardBody>
-    </Card>
+        </CardBody>
+      </Card>
+    </Link>
   )
 }
 
