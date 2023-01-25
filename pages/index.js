@@ -10,4 +10,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-export { getServerSideProps } from '../components/chakraui'

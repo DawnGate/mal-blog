@@ -34,12 +34,19 @@ const Logo = () => {
 
 const NavBarItem = ({ title, src, isActive }) => {
   return (
-    <Link as={NextLink} href={src} variant="noUnderline">
+    <Link as={NextLink} href={src} variant="hoverCustom">
       <Box padding={2} textTransform="capitalize">
         <CustomText fontSize="xl" fontWeight={500} active={isActive}>
           {title}
         </CustomText>
-        {isActive && <Box transitionDuration={'1s'} borderTop="2px"></Box>}
+        {
+          <Box
+            className="box-underline"
+            transitionDuration={'1s'}
+            borderTop="2px"
+            display="none"
+          />
+        }
       </Box>
     </Link>
   )

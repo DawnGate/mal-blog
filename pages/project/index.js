@@ -1,8 +1,8 @@
 import { HStack } from '@chakra-ui/react'
-import CardItem from '../components/cardItem'
-import GridLayout from '../components/gridLayout'
-import PageLayout from '../components/pageLayout'
-import CustomText from '../components/text'
+import CardItem from '../../components/cardItem'
+import GridLayout from '../../components/gridLayout'
+import PageLayout from '../../components/pageLayout'
+import CustomText from '../../components/text'
 
 const posts = [
   {
@@ -38,5 +38,3 @@ const Posts = () => {
 }
 
 export default Posts
-
-export { getServerSideProps } from '../components/chakraui'

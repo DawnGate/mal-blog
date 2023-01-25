@@ -20,6 +20,22 @@ const LinkTheme = {
         textDecoration: 'none',
       },
     },
+    hoverCustom: {
+      _hover: {
+        '.box-underline': {
+          display: 'block',
+        },
+        textDecoration: 'none',
+      },
+    },
+    blogItem: {
+      _hover: {
+        '.blog-item-title': {
+          textDecoration: 'underline',
+        },
+        textDecoration: 'none',
+      },
+    },
   },
 }
 
