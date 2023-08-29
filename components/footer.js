@@ -1,5 +1,5 @@
 import { Box, Link, Text } from '@chakra-ui/react'
-import { GITHUB_LINK } from '../config/consts'
+import { GITHUB_LINK } from '@/config/constant'
 import NextLink from 'next/link'
 
 const Footer = () => {

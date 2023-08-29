@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Head from 'next/head'
-import { capitalizeString } from '../utils'
+import { capitalizeString } from '@/utils'
 
 const PageLayoutAnimation = ({ children }) => {
   return (

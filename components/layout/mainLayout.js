@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react'
-import Footer from './footer'
-import Head from './head'
-import Header from './hearder'
+import Footer from '@/components/footer'
+import Head from '@/components/head'
+import Header from '@/components/header'
 
 const MainLayout = ({ children }) => {
   return (

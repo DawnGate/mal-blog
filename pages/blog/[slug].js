@@ -1,6 +1,6 @@
-import PageLayout from '../../components/pageLayout'
-import getAllBlog, { getBlogBySlug } from '../../lib/api'
-import markdownToHtml from '../../lib/markdownToHtml'
+import PageLayout from '@/components/layout/pageLayout'
+import getAllBlog, { getBlogBySlug } from '@/lib/api'
+import markdownToHtml from '@/lib/markdownToHtml'
 
 const Blog = ({ blog }) => {
   return (

@@ -1,5 +1,5 @@
-import { Chakra } from '../components/chakraui'
-import MainLayout from '../components/mainLayout'
+import { Chakra } from '@/components/chakraui'
+import MainLayout from '@/components/layout/mainLayout'
 
 const MyApp = ({ Component, pageProps, ...otherProps }) => {
   return (

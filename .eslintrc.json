@@ -1,5 +1,5 @@
 {
-  // specifiy where the eslintrc will working
+  // specify where the eslintrc will working
   "root": true,
   "extends": "next/core-web-vitals",
   "rules": {
