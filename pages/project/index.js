@@ -1,7 +1,7 @@
 import { HStack } from '@chakra-ui/react'
 import CardItem from '../../components/cardItem'
-import GridLayout from '../../components/gridLayout'
-import PageLayout from '../../components/pageLayout'
+import GridLayout from '../../components/layout/gridLayout'
+import PageLayout from '../../components/layout/pageLayout'
 import CustomText from '../../components/text'
 
 const posts = [

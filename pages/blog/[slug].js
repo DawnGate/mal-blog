@@ -1,4 +1,4 @@
-import PageLayout from '../../components/pageLayout'
+import PageLayout from '../../components/layout/pageLayout'
 import getAllBlog, { getBlogBySlug } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 

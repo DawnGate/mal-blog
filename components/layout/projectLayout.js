@@ -1,7 +1,7 @@
 import { Box, Image, VStack } from '@chakra-ui/react'
 import PageLayout from './pageLayout'
-import TechStack from './techStack'
-import CustomText from './text'
+import TechStack from '@components/techStack'
+import CustomText from '@components/text'
 
 const ImageBox = ({ source, title, description }) => {
   return (

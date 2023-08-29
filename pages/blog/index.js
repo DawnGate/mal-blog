@@ -1,9 +1,9 @@
 import { HStack } from '@chakra-ui/react'
 import CustomText from '../../components/text'
 import { CardBlogItem } from '../../components/cardItem'
-import GridLayout from '../../components/gridLayout'
+import GridLayout from '../../components/layout/gridLayout'
 
-import PageLayout from '../../components/pageLayout'
+import PageLayout from '../../components/layout/pageLayout'
 import getAllBlog from '../../lib/api'
 
 const NoBlog = () => {
