@@ -3,7 +3,7 @@ import CustomText from './text'
 import NextLink from 'next/link'
 import TimeLabel from './timeLabel'
 
-const CardItem = ({ imageSrc, imageAlt, linkHref, title, excerpt }) => {
+const CardItem = ({ imageSrc, imageAlt, linkHref, title, excerpt = '' }) => {
   return (
     <Link as={NextLink} href={linkHref}>
       <Card>

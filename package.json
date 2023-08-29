@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "kr4k9n",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@chakra-ui/icons": "2.0.13",
     "@chakra-ui/react": "2.4.2",
@@ -27,8 +28,10 @@
     "remark-html": "^15.0.1"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.19",
     "eslint": "^8.30.0",
     "eslint-config-next": "^13.1.1",
+    "eslint-config-prettier": "^9.0.0",
     "prettier": "2.8.1"
   }
 }
