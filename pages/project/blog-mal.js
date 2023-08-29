@@ -1,4 +1,4 @@
-import ProjectLayout from '../../components/projectLayout'
+import ProjectLayout from '@/components/layout/projectLayout'
 
 const initData = {
   title: 'blog-mal',
@@ -20,4 +20,4 @@ const BlogMal = () => {
 
 export default BlogMal
 
-export { getServerSideProps } from '../../components/chakraui'
+export { getServerSideProps } from '@/components/chakraui'
