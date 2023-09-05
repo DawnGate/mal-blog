@@ -14,27 +14,17 @@ const ImageBox = ({ source, title, description }) => {
   )
 }
 
-const ProjectLayout = ({
-  title,
-  titleText,
-  techStacks,
-  descriptionText,
-  previewImages,
-}) => {
+const ProjectLayout = ({ title, titleText, techStacks, descriptionBody, previewImages }) => {
   return (
     <PageLayout title={title}>
       {/* title  */}
-      <CustomText fontSize="xl" fontWeight={700}>
+      <CustomText fontSize="xl" fontWeight={700} paddingBottom={2}>
         {titleText}
       </CustomText>
       {/* tech stacks */}
       <TechStack techs={techStacks} />
       {/* description */}
-      <Box paddingY={8}>
-        <CustomText active={false} textIndent={8}>
-          {descriptionText}
-        </CustomText>
-      </Box>
+      <Box paddingY={8}>{descriptionBody}</Box>
       {/* example view */}
       <VStack>
         {previewImages.map((item) => (
