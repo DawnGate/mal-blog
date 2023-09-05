@@ -22,9 +22,6 @@ const LinkTheme = {
     },
     hoverCustom: {
       _hover: {
-        '.box-underline': {
-          display: 'block',
-        },
         textDecoration: 'none',
       },
     },
