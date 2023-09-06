@@ -2,19 +2,20 @@ import { Box, Image, VStack } from '@chakra-ui/react'
 import PageLayout from './pageLayout'
 import TechStack from '@/components/techStack'
 import CustomText from '@/components/text'
+import TypeProject from '../typeProject'
 
 const ImageBox = ({ source, title, description }) => {
   return (
     <Box>
-      <Image src={source} alt={title} />
-      <CustomText active={false} textIndent={8}>
+      <Image src={source} alt={title} padding={1} boxShadow="0 0 2px 2px" borderRadius="md" />
+      <CustomText mt={1} active={false} textIndent={8}>
         {description}
       </CustomText>
     </Box>
   )
 }
 
-const ProjectLayout = ({ title, titleText, techStacks, descriptionBody, previewImages }) => {
+const ProjectLayout = ({ title, titleText, techStacks, typeProject, descriptionBody, previewImages }) => {
   return (
     <PageLayout title={title}>
       {/* title  */}
@@ -23,6 +24,8 @@ const ProjectLayout = ({ title, titleText, techStacks, descriptionBody, previewI
       </CustomText>
       {/* tech stacks */}
       <TechStack techs={techStacks} />
+      {/* project type */}
+      <TypeProject type={typeProject} />
       {/* description */}
       <Box paddingY={8}>{descriptionBody}</Box>
       {/* example view */}

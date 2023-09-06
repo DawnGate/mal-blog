@@ -12,6 +12,7 @@ const initData = {
       description: 'Home page, the picture I take from the home page of blog project',
     },
   ],
+  typeProject: 'personal',
 }
 const BlogMal = () => {
   const descriptionBody = (

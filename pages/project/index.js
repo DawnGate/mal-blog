@@ -11,6 +11,12 @@ const posts = [
     linkHref: '/project/blog-mal',
     title: 'Quyen Lam Blog',
   },
+  {
+    imageSrc: '/assets/images/chat-app.png',
+    imageAlt: 'Chat app',
+    linkHref: '/project/chat-app',
+    title: 'Chat App',
+  },
 ]
 
 const NoPost = () => {
