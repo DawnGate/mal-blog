@@ -9,7 +9,7 @@ const projectTypes = {
 const TypeProject = ({ type = 'personal' }) => {
   return (
     <Box>
-      <CustomText fontWeight={600} textDecoration="underline">
+      <CustomText fontWeight={600} textDecoration="underline" mb={2}>
         Type of project:{' '}
       </CustomText>
       <Tag colorScheme={projectTypes[type]}>{type}</Tag>

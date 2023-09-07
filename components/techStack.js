@@ -10,6 +10,8 @@ const techStacks = [
   { title: 'nextjs', bg: 'black' },
   { title: 'nextjs13', bg: 'black' },
   { title: 'react', bg: 'blue' },
+  { title: 'react-context', bg: 'blue' },
+  { title: 'react-query', bg: 'orange' },
 ]
 
 const defaultTech = {
