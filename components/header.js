@@ -19,9 +19,10 @@ const Logo = () => {
       as={motion.div}
       whileHover={{ scale: 1.1 }}
       transition="0.1s linear"
+      height="100%"
     >
       <Avatar
-        size="md"
+        size="sm"
         name="Lam Nguyen"
         src="/assets/images/logo-kraken.jpeg"
       />
@@ -34,19 +35,27 @@ const Logo = () => {
 
 const NavBarItem = ({ title, src, isActive }) => {
   return (
-    <Link as={NextLink} href={src} variant="hoverCustom">
-      <Box padding={2} textTransform="capitalize">
+    <Link
+      as={NextLink}
+      href={src}
+      variant="hoverCustom"
+      _hover={{
+        '.box-underline': {
+          width: '100%',
+        },
+      }}
+    >
+      <Box paddingX={2} textTransform="capitalize">
         <CustomText fontSize="xl" fontWeight={500} active={isActive}>
           {title}
         </CustomText>
-        {
-          <Box
-            className="box-underline"
-            transitionDuration={'1s'}
-            borderTop="2px"
-            display="none"
-          />
-        }
+        <Box
+          className="box-underline"
+          transition="ease-in"
+          transitionDuration={'0.5s'}
+          borderTop="2px"
+          width={isActive ? '100%' : 0}
+        />
       </Box>
     </Link>
   )

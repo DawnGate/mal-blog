@@ -11,6 +11,18 @@ const posts = [
     linkHref: '/project/blog-mal',
     title: 'Quyen Lam Blog',
   },
+  {
+    imageSrc: '/assets/images/chat-app.png',
+    imageAlt: 'Chat app',
+    linkHref: '/project/chat-app',
+    title: 'Chat App',
+  },
+  {
+    imageSrc: '/assets/images/edvin-app.png',
+    imageAlt: 'Edvin app - education platform',
+    linkHref: '/project/edvin-app',
+    title: 'Edvin App',
+  },
 ]
 
 const NoPost = () => {

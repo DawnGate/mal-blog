@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "ES6",
+    "module": "ESNext",
+    "checkJs": true,
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]

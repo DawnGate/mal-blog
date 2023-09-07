@@ -25,7 +25,7 @@ const BioBody = ({ introduce }) => {
 
 const BioContact = () => {
   return (
-    <Box textIndent={8} fontWeight={700}>
+    <Box textIndent={'8'} fontWeight={700}>
       <Box>
         <Link as={NextLink} href={GITHUB_LINK} color="teal.500">
           Github
@@ -46,22 +46,21 @@ const BioSection = () => {
       <BioBox>
         <Image src="/assets/images/profile.jpg" alt="profile"></Image>
         <CustomText textAlign={'center'} fontWeight={600} active={false}>
-          &quot;Every day is a adventure.&quot;
+          &quot;Every day is an adventure.&quot;
         </CustomText>
       </BioBox>
       <BioBox>
-        <BioHeader title="Hello, My name is Quyen Lam, I'm a computer science engineering" />
+        <BioHeader title="About me" />
         <BioBody
-          introduce="Currently, I work as a frontend developer. I'm love to improve product from UI,UX, ... to performance. 
-       For future I will become a full-stack developer with senior knowledge and more skills. 
-       I love solve problem, learning architecture and avoid problem from learning after fells. 
+          introduce="Hi, I'm Quyen Lam, my name mean natural and mountain. I'm a computer science engineer. Currently, I work as a frontend developer focus in React and React ecosystem. I'm love to improve product from UI,UX, ... to performance.  
+       I love solve problem, learning architecture and avoid problem from learning after falls. My aiming is learning more as I can. 
         "
         />
       </BioBox>
       <BioBox>
         <BioHeader title="The value I live by" />
         <BioBody introduce="Courage - I solve many problem and pass through the scare to find the path with the courage." />
-        <BioBody introduce="Professional - Try to get the better and better, be professional in what you doing. Then create something is 'value'." />
+        <BioBody introduce="Professional - Try to get the better and better, I'm always think how to professional in what I do and what I will do. Create value for product and for me, from this 'value' I gain more experiences." />
       </BioBox>
       <BioBox>
         <BioHeader title="My hobbies" />
