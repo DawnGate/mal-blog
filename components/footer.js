@@ -5,7 +5,7 @@ import NextLink from 'next/link'
 const Footer = () => {
   return (
     <Box marginY={3}>
-      <Text>
+      <Text textAlign="center">
         Made by Lam Nguyen. Contact with me{' '}
         <Link as={NextLink} href={`mailto: ${EMAIL_LINK}`} color="teal.500">
           @lamnguyen
