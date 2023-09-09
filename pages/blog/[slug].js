@@ -1,24 +1,21 @@
 import PageLayout from '@/components/layout/pageLayout'
+import mdxComponents from '@/components/mdx-components'
 import getAllBlog, { getBlogBySlug } from '@/lib/api'
-import markdownToHtml from '@/lib/markdownToHtml'
+import { MDXRemote } from 'next-mdx-remote'
 
-const Blog = ({ blog }) => {
+const Blog = ({ blogMdxSource }) => {
   return (
-    <PageLayout title={blog.title}>
-      <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+    <PageLayout title={blogMdxSource.frontmatter.title}>
+      <MDXRemote components={mdxComponents} {...blogMdxSource} />
     </PageLayout>
   )
 }
 
 export async function getStaticProps({ params }) {
-  const blog = getBlogBySlug(params.slug, ['title', 'date', 'slug', 'content'])
-  const content = await markdownToHtml(blog.content || '')
+  const blogMdxSource = await getBlogBySlug(params.slug)
   return {
     props: {
-      blog: {
-        ...blog,
-        content,
-      },
+      blogMdxSource,
     },
   }
 }

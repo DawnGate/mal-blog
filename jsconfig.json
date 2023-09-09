@@ -10,6 +10,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["**/*.js"],
+  "include": ["**/*.js", "next.config.cjs"],
   "exclude": ["node_modules", "**/node_modules", "dist"]
 }

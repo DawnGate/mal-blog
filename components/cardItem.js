@@ -32,7 +32,7 @@ const CardItem = ({ imageSrc, imageAlt, linkHref, title, excerpt = '' }) => {
 export const CardBlogItem = ({ linkHref, title, excerpt, date }) => {
   return (
     <Link as={NextLink} href={linkHref} variant="blogItem">
-      <Card>
+      <Card height="100%">
         <CardBody>
           <CustomText fontWeight={500} className="blog-item-title">
             {title}
