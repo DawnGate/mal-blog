@@ -5,7 +5,9 @@ const Head = () => {
     title: 'Lam Nguyen Blogs',
     description: 'Introduce and sharing blogs of Lam Nguyen(kraken)',
     image: `${process.env.NEXT_PUBLIC_HOST_URL}/assets/favicons/logo-kraken.svg`,
+    imageOg: `${process.env.NEXT_PUBLIC_HOST_URL}/assets/images/logo-kraken.jpeg`,
     author: 'lam99quyen@gmail.com',
+    url: process.env.NEXT_PUBLIC_HOST_URL,
   }
   return (
     <NextHead>
@@ -17,15 +19,23 @@ const Head = () => {
       <title>{meta.title}</title>
 
       <meta property="og:site-name" content={meta.title} />
+      <meta property="og:url" content={meta.url} />
       <meta property="og:description" content={meta.description} />
       <meta property="og:title" content={meta.title} />
-      <meta property="og:image" content={meta.image} />
+      <meta property="og:image" content={meta.imageOg} />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:width" content="200" />
+      <meta property="og:image:height" content="200" />
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@lam99quyen" />
-      <meta name="twitter:title" content={meta.title} />
-      <meta name="twitter:description" content={meta.description} />
-      <meta name="twitter:image" content={meta.image} />
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:site" content="@lam99quyen" />
+      <meta property="twitter:title" content={meta.title} />
+      <meta property="twitter:description" content={meta.description} />
+      <meta property="twitter:image" content={meta.imageOg} />
+      <meta property="twitter:image:src" content={meta.imageOg} />
+      <meta property="twitter:image:type" content="image/jpeg" />
+      <meta property="twitter:image:width" content="200" />
+      <meta property="twitter:image:height" content="200" />
 
       <link rel="icon" type="image/svg+xml" href={meta.image} />
 
