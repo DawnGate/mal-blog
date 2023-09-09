@@ -1,4 +1,5 @@
-import { Box, Image, VStack } from '@chakra-ui/react'
+import { Box, VStack } from '@chakra-ui/react'
+import Image from 'next/image'
 import PageLayout from './pageLayout'
 import TechStack from '@/components/techStack'
 import CustomText from '@/components/text'
@@ -7,7 +8,9 @@ import TypeProject from '../typeProject'
 const ImageBox = ({ source, title, description }) => {
   return (
     <Box>
-      <Image src={source} alt={title} padding={1} boxShadow="0 0 2px 2px" borderRadius="md" />
+      <Box padding={1} boxShadow="0 0 2px 2px" borderRadius="md">
+        <Image alt={title} src={source} fill={true} style={{ objectFit: 'cover' }} />
+      </Box>
       <CustomText mt={1} active={false} textIndent={8}>
         {description}
       </CustomText>
