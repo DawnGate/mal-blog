@@ -44,12 +44,12 @@ const NavBarItem = ({ title, src, isActive }) => {
   )
 }
 
-const HeaderContent = ({ currentRoute }) => {
+const HeaderContent = ({ currentRoute = '' }) => {
   const routes = ['project', 'blog']
   return (
     <HStack paddingX={5} flex={'1'}>
       {routes.map((item) => (
-        <NavBarItem key={item} title={item} src={`/${item}`} isActive={`/${item}` === currentRoute} />
+        <NavBarItem key={item} title={item} src={`/${item}`} isActive={currentRoute.startsWith(`/${item}`)} />
       ))}
     </HStack>
   )
