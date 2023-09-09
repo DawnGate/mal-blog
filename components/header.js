@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Box,
-  Center,
-  Container,
-  HStack,
-  Link,
-  Text,
-} from '@chakra-ui/react'
+import { Avatar, Box, Center, Container, HStack, Link, Text } from '@chakra-ui/react'
 import CustomText from './text'
 import { motion } from 'framer-motion'
 import NextLink from 'next/link'
@@ -15,18 +7,9 @@ import IconChangeColor from './iconChangeColor'
 
 const Logo = () => {
   return (
-    <HStack
-      as={motion.div}
-      whileHover={{ scale: 1.1 }}
-      transition="0.1s linear"
-      height="100%"
-    >
-      <Avatar
-        size="sm"
-        name="Lam Nguyen"
-        src="/assets/images/logo-kraken.jpeg"
-      />
-      <Text fontSize="2xl" fontWeight="bold">
+    <HStack as={motion.div} whileHover={{ scale: 1.1 }} transition="0.1s linear" height="100%">
+      <Avatar size="sm" name="Lam Nguyen" src="/assets/images/logo-kraken.jpeg" />
+      <Text fontSize={['lg', null, '2xl']} fontWeight="bold">
         Lam Nguyen
       </Text>
     </HStack>
@@ -61,17 +44,12 @@ const NavBarItem = ({ title, src, isActive }) => {
   )
 }
 
-const HeaderContent = ({ currentRoute }) => {
+const HeaderContent = ({ currentRoute = '' }) => {
   const routes = ['project', 'blog']
   return (
     <HStack paddingX={5} flex={'1'}>
       {routes.map((item) => (
-        <NavBarItem
-          key={item}
-          title={item}
-          src={`/${item}`}
-          isActive={`/${item}` === currentRoute}
-        />
+        <NavBarItem key={item} title={item} src={`/${item}`} isActive={currentRoute.startsWith(`/${item}`)} />
       ))}
     </HStack>
   )

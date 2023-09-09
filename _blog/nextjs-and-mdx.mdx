@@ -1,0 +1,160 @@
+---
+title: 'Start a blog with .mdx and Nextjs'
+excerpt: "When i start this blog, I'm use markdown to quick start. But not too long, I get problem with how to style the markdown content. This post will show you how I pass through it."
+date: '2023-09-09T12:19:47+07:00'
+---
+
+# Introduce
+
+When I start this projects, I had come with idea how quickly ship to production. I chose nextjs as framework, js for not type safe :V and markdown for the first blog.
+
+But no long time for problem occur. My blog content with no css. And my brain said: "Yup. My second blog will how I make my blog more colors".
+
+# what is MDX?
+
+MDX allows you to use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content. This makes writing long-form content with components a blast.
+
+See more in [mdx](https://mdxjs.com/)
+
+For me, it mean: from a simple **Readme.md** normal, now you can using both **Readme.md** and **Readme.jsx** in same file, and this file name **Readme.mdx** 🤣🤣🤣.
+
+# The old code
+
+Let look back, this is a old code. I'm using .md file like this.
+
+```js
+# lib/api.js
+import fs from 'fs'
+import { join } from 'path'
+import matter from 'gray-matter'
+
+const blogDirectory = join(process.cwd(), '_blog')
+
+const getBlogSlugs = () => {
+  return fs.readdirSync(blogDirectory)
+}
+
+export const getBlogBySlug = (slug, fields) => {
+  const realSlug = slug.replace(/.md$/, '')
+  const fullPath = join(blogDirectory, `${realSlug}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf-8')
+  const { data, content } = matter(fileContents)
+}
+```
+
+I'm using gray-matter to get metadata and content separate. After that, using remark-html to parse string to html.
+And pass the html to div to can render. Like example below.
+
+```js
+# lib/markdownToHTML.js
+import { remark } from 'remark'
+import html from 'remark-html'
+
+const markdownToHtml = async (markdown) => {
+  const result = await remark().use(html).process(markdown)
+  return result.toString()
+}
+
+export default markdownToHtml
+```
+
+```jsx
+# blog/[slug].js
+
+const Blog = ({ blog }) => {
+  return (
+    <PageLayout title={blog.title}>
+      <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+    </PageLayout>
+  )
+}
+```
+
+Other example in [next/blog-starter](https://github.com/vercel/next.js/blob/canary/examples/blog-starter). The example from **Nextjs**, with more detail for a blog project.
+
+But you see, with this it will not enough. When style for md file is difficult. I found a library [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote).
+and a example from next repository [next/with-mdx-remote](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote).
+
+# Using next-mdx-remote
+
+First of all, install step.
+
+```bash
+yarn add next-mdx-remote
+```
+
+Edit your lib/api.js. Now import _serialize_ to can process your markdown. The config is a bit different then default because I use rehypePlugins to high light code and frontmatter to read meta data.
+
+```js
+# lib/api.js
+
+import fs from 'fs'
+import { join } from 'path'
+import { serialize } from 'next-mdx-remote/serialize'
+
+import rehypeHighlight from 'rehype-highlight'
+
+const blogDirectory = join(process.cwd(), '_blog')
+
+const getBlogSlugs = () => {
+  return fs.readdirSync(blogDirectory)
+}
+
+export const getBlogBySlug = (slug = '') => {
+  const realSlug = slug.replace(/\.mdx$/, '')
+  const fullPath = join(blogDirectory, `${realSlug}.mdx`)
+  const fileContents = fs.readFileSync(fullPath, 'utf-8')
+  const mdxSource = serialize(fileContents, {
+    parseFrontmatter: true,
+    mdxOptions: {
+      remarkPlugins: [],
+      rehypePlugins: [rehypeHighlight],
+      format: 'mdx',
+    },
+  })
+
+  return mdxSource
+}
+```
+
+After have _mdxSource_, now pass it as props in _MDXRemote_ component, it provide from _next-mdx-remote_
+
+```jsx
+# /post/[blog].js
+import { MDXRemote } from 'next-mdx-remote'
+
+const Blog = ({ blogMdxSource }) => {
+  return (
+    <PageLayout title={blogMdxSource.frontmatter.title}>
+      <MDXRemote components={mdxComponents} {...blogMdxSource} />
+    </PageLayout>
+  )
+}
+```
+
+If you consider what is components?, and components is list of override components you have config.
+The code below is my custom components override for mdx components.
+
+```jsx
+import MLink from './Link'
+import MCodeBlock from './MCodeBlock'
+import MHeading from './MHeading'
+import MTypography from './MTypography'
+
+const mdxComponents = {
+  p: MTypography,
+  h1: MHeading,
+  a: MLink,
+  code: MCodeBlock,
+}
+
+export default mdxComponents
+```
+
+Yeah, you all done.
+
+# Conclusion
+
+I think this make more possible when using with mdx. I will update more If possible.
+
+With list of plugins of mdx. It will big advances for try.

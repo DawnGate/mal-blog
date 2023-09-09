@@ -8,8 +8,15 @@ import TypeProject from '../typeProject'
 const ImageBox = ({ source, title, description }) => {
   return (
     <Box>
-      <Box padding={1} boxShadow="0 0 2px 2px" borderRadius="md">
-        <Image alt={title} src={source} fill={true} style={{ objectFit: 'cover' }} />
+      <Box padding={2} boxShadow="0 0 2px 2px" borderRadius="md" textAlign="center">
+        <Image
+          alt={title}
+          src={source}
+          height={300}
+          width={500}
+          priority
+          style={{ objectFit: 'cover', margin: 'auto' }}
+        />
       </Box>
       <CustomText mt={1} active={false} textIndent={8}>
         {description}
