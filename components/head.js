@@ -9,6 +9,7 @@ const Head = () => {
     author: 'lam99quyen@gmail.com',
     url: process.env.NEXT_PUBLIC_HOST_URL,
   }
+
   return (
     <NextHead>
       {/* <meta content="IE-edge" httpEquiv="X-UA-Compatible" /> */}
