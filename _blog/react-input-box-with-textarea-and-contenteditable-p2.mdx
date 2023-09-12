@@ -1,0 +1,180 @@
+---
+title: 'React input box with textarea and contentEditable P2'
+excerpt: 'React input box with contentEditable'
+date: '2023-09-12T22:10:30+07:00'
+---
+
+# Introduce
+
+The previous part, we tell about textarea for handle input box. How about contentEditable?
+
+then **contenteditable** is attribute make every thing can be editable. [view more](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable)
+
+The different is textarea only support text, it can multiple line but with plain text value.
+The contenteditable help you in create custom editors, rich text editor where user can input and format text.
+
+This is make different, not plain text, now you control html input 🥹
+
+# Settings
+
+If you follow from the previous, go to the repository [react-input-chat-box](https://github.com/DawnGate/react-input-chat-box)
+and find the file [InputContentEditable.tsx](https://github.com/DawnGate/react-input-chat-box/blob/main/src/InputContentEditable.tsx)
+
+```tsx
+function InputContentEditable() {
+  return (
+    <div
+      className={styles.inputContentEditable}
+      ref={inputRef}
+      contentEditable
+      role="textbox"
+      aria-label="Message..."
+    />
+  )
+}
+```
+
+The first problem is how div can display placeholder?
+We will not use placeholder property, we using aria-label and css for show place holder
+
+```css
+.inputContentEditable {
+  padding: 4px;
+  word-break: break-word;
+  white-space: pre-wrap;
+
+  outline: none;
+
+  &[aria-label]:empty:before {
+    content: attr(aria-label);
+    color: #765827;
+  }
+}
+```
+
+Second problem is onChange not working. We can't using because div not have value, so the replace is using onInput. We store the html as state when need handle for some action like submit for format.
+
+```tsx
+const [html, setHtml] = useState<string>('')
+
+const handleChange = (e: ChangeEvent<HTMLDivElement>) => {
+  const { innerHTML, textContent } = e.currentTarget
+  setHtml(innerHTML ?? '')
+  if (textContent && textContent.length) {
+    console.log(textContent)
+  }
+}
+
+...
+
+return (
+    <div
+      className={styles.inputContentEditable}
+      ref={inputRef}
+      onInput={handleChange}
+      ...
+      />)
+
+
+```
+
+But how it can know the scrollbar should show. The div with contenteditable get problem with
+You can implement like part 1, but I implement another way is, have a parentRef will handle the height of input box.
+Because, I will implement it like some editor so this will helpful in future.
+
+The different is when call the function? Because we change the html of div so, we use useEffect to this html, but cover for when the html clear and the div must clear all data in it.
+so the function for updateHeight will call later after reset complete for not make some bug with height.
+
+```tsx
+const updateInputHeight = () => {
+  if (inputRef.current && scrollRef.current) {
+    scrollRef.current.style.overflow = 'hidden'
+    scrollRef.current.style.height = `${inputRef.current.scrollHeight}px`
+    if (inputRef.current.scrollHeight > MAX_CHAT_BOX_HEIGHT) {
+      scrollRef.current.style.overflowY = 'scroll'
+      scrollRef.current.style.height = `${MAX_CHAT_BOX_HEIGHT}px`
+    }
+  }
+}
+
+useEffect(() => {
+  // reset input box
+  if (inputRef.current && html !== inputRef.current.innerHTML) {
+    inputRef.current.innerHTML = html
+  }
+
+  updateInputHeight()
+}, [html])
+```
+
+The final code:
+
+```tsx
+import styles from './Input.module.css'
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
+
+const MAX_CHAT_BOX_HEIGHT = 100
+
+function InputContentEditable() {
+  const inputRef = useRef<HTMLDivElement>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const [html, setHtml] = useState<string>('')
+
+  const updateInputHeight = () => {
+    if (inputRef.current && scrollRef.current) {
+      scrollRef.current.style.overflow = 'hidden'
+      scrollRef.current.style.height = `${inputRef.current.scrollHeight}px`
+      if (inputRef.current.scrollHeight > MAX_CHAT_BOX_HEIGHT) {
+        scrollRef.current.style.overflowY = 'scroll'
+        scrollRef.current.style.height = `${MAX_CHAT_BOX_HEIGHT}px`
+      }
+    }
+  }
+
+  useEffect(() => {
+    // reset input box
+    if (inputRef.current && html !== inputRef.current.innerHTML) {
+      inputRef.current.innerHTML = html
+    }
+
+    updateInputHeight()
+  }, [html])
+
+  const handleChange = (e: ChangeEvent<HTMLDivElement>) => {
+    const { innerHTML, textContent } = e.currentTarget
+    setHtml(innerHTML ?? '')
+    if (textContent && textContent.length) {
+      console.log(textContent)
+    }
+  }
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      console.log('send')
+      setHtml('')
+    }
+  }
+
+  return (
+    <div ref={scrollRef} className={`${styles.inputWrapper} scrollbar`}>
+      <div
+        ref={inputRef}
+        className={styles.inputContentEditable}
+        contentEditable
+        role="textbox"
+        aria-label="Message..."
+        onInput={handleChange}
+        onKeyDown={handleKeyDown}
+      />
+    </div>
+  )
+}
+
+export default InputContentEditable
+```
+
+# Conclusion
+
+After 2 part, I hope that give you simple idea about input box for different case

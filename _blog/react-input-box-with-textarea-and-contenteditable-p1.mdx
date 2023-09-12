@@ -1,0 +1,190 @@
+---
+title: 'React input box with textarea and contentEditable P1'
+excerpt: 'React input box with textarea'
+date: '2023-09-11T23:01:32+07:00'
+---
+
+# Introduce
+
+My recent project is about chat app. After other project with chat app. I'm focus on the input box.
+
+With my others project, input box just simple input tag, 1 line typing and send. 😃
+
+So, try some different? I wonder how Slack, Chatgpt, Telegram, Facebook.... and other app handle input box. The input can type with multiple line and have a scroll after get limit height?
+
+Let's clone it 😅.
+
+# Solutions
+
+The input tag is only single-line input, so if you want multiple line input. Try different tag.
+
+After some researching, I come with 2 option:
+
+option1: textarea <br/>
+option2: div with contentEditable
+
+So, let's explain by code with example. You can view code in my repo [react-input-chat-box](https://github.com/DawnGate/react-input-chat-box)
+
+# Input box with textarea
+
+First create simple chat. I using a flex chat box with 500px height. Expected input box chat change height but chat box always constant at 500px.
+
+![The input chat box style](/assets/images/blogs/react-input-chat-box.png)
+_pic: The input chat box style_
+
+You can watch with file [InputTextArea.tsx](https://github.com/DawnGate/react-input-chat-box/blob/main/src/InputTextArea.tsx) for the full code of this example.
+
+```tsx
+function InputTextArea() {
+  return <textarea />
+}
+```
+
+Done. 🤣 Yes, just it, you already done multiple line input, but make it feel more smooth, we will continue with css.
+
+```css
+.inputWrapper {
+  flex: 1;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.inputTextArea {
+  /* reset style for textarea */
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 0;
+
+  /* make the input in center with emoji */
+  margin-bottom: 4px;
+
+  word-break: break-all;
+}
+
+/* make scroll bar look good*/
+.scrollbar {
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #5a5a5a4d;
+    border-radius: 0.375rem;
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.01);
+  }
+}
+```
+
+textarea default have 2 rows, so must reset it to 1. That make we easy for center the input with emoji in same line.
+
+```tsx
+import styles from './Input.module.css'
+
+function InputTextArea() {
+  return <textarea className={`${styles.inputWrapper} ${styles.inputTextArea} scrollbar` row={1} />
+}
+```
+
+But how about the scroll in the input box? If we set overflow="auto", it will need to know the height to show the scrollbar.
+So after the text change, we will compare the box with the max height and set new height for this box. The point here is,
+we can control max height of the box and show the scrollbar only when out of this max height.
+
+we will use ref to check the height of input box. After value of textarea we use Effect to run function compare the scroll height with max height and give new height for textarea.
+
+```tsx
+const adjustTextareaHeight = () => {
+  if (textareaRef.current) {
+    textareaRef.current.style.overflowY = 'hidden'
+    textareaRef.current.style.maxHeight = `${MAX_CHAT_BOX_HEIGHT}px`
+    textareaRef.current.style.height = 'auto'
+    if (textareaRef.current.scrollHeight >= MAX_CHAT_BOX_HEIGHT) {
+      textareaRef.current.style.overflowY = 'scroll'
+    }
+    textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+  }
+}
+
+// effect
+useEffect(() => {
+  adjustTextareaHeight()
+}, [inputText])
+```
+
+The finish code will have the function to handle submit, it make you ux make look more smooth when user enter and clear the current input.
+
+```tsx
+import { useState, useEffect, useRef, ChangeEvent, KeyboardEvent } from 'react'
+import styles from './Input.module.css'
+
+const MAX_CHAT_BOX_HEIGHT = 100
+
+function InputTextArea() {
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+  // state
+  const [inputText, setInputText] = useState<string>('')
+  // local variable
+  const trimmedText = inputText.trim()
+
+  // event
+  const handleSubmit = () => {
+    if (!trimmedText) return
+    // send message to server
+    console.log(trimmedText)
+    // reset input text
+    setInputText('')
+    if (textareaRef.current) {
+      textareaRef.current.value = ''
+    }
+  }
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setInputText(e.target.value)
+  }
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault()
+      handleSubmit()
+    } else if (e.key === 'Enter' && e.shiftKey) {
+      setInputText((prev) => `${prev}\t`)
+    }
+  }
+
+  const adjustTextareaHeight = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.overflowY = 'hidden'
+      textareaRef.current.style.maxHeight = `${MAX_CHAT_BOX_HEIGHT}px`
+      textareaRef.current.style.height = 'auto'
+      if (textareaRef.current.scrollHeight >= MAX_CHAT_BOX_HEIGHT) {
+        textareaRef.current.style.overflowY = 'scroll'
+      }
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+    }
+  }
+
+  // effect
+  useEffect(() => {
+    adjustTextareaHeight()
+  }, [inputText])
+
+  return (
+    <textarea
+      className={`${styles.inputWrapper} ${styles.inputTextArea} scrollbar`}
+      rows={1}
+      value={inputText}
+      placeholder="Message..."
+      onChange={handleChange}
+      onKeyDown={handleKeyDown}
+      ref={textareaRef}
+    />
+  )
+}
+
+export default InputTextArea
+```
+
+# Conclusion
+
+This textarea is make me feel good in some first day to find solution. But another solution come, this is contentEditable, I will describe it later.
