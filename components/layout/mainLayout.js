@@ -2,11 +2,13 @@ import { Container } from '@chakra-ui/react'
 import Footer from '@/components/footer'
 import Head from '@/components/head'
 import Header from '@/components/header'
+import GoogleAnalytics from '../googleAnalytics'
 
 const MainLayout = ({ children }) => {
   return (
     <>
       <Head />
+      <GoogleAnalytics />
       <>
         <Header />
         <main>
