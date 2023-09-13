@@ -1,6 +1,8 @@
-import { Box, Image, Link } from '@chakra-ui/react'
-import CustomText from './text'
 import NextLink from 'next/link'
+import Image from 'next/image'
+
+import { Box, Link } from '@chakra-ui/react'
+import CustomText from './text'
 import { GITHUB_LINK, LINKEDIN_LINK } from '@/config/constant'
 
 const BioBox = ({ children }) => {
@@ -44,7 +46,7 @@ const BioSection = () => {
   return (
     <section>
       <BioBox>
-        <Image src="/assets/images/profile.jpg" alt="profile"></Image>
+        <Image src="/assets/images/profile.jpg" alt="profile" height={400} width={600} priority />
         <CustomText textAlign={'center'} fontWeight={600} active={false}>
           &quot;Every day is an adventure.&quot;
         </CustomText>
@@ -52,15 +54,15 @@ const BioSection = () => {
       <BioBox>
         <BioHeader title="About me" />
         <BioBody
-          introduce="Hi, I'm Quyen Lam, my name mean natural and mountain. I'm a computer science engineer. Currently, I work as a frontend developer focus in React and React ecosystem. I'm love to improve product from UI,UX, ... to performance.  
-       I love solve problem, learning architecture and avoid problem from learning after falls. My aiming is learning more as I can. 
+          introduce="Hi, I'm Quyen Lam, my name signifies 'natural' and 'mountain'. I'm a computer science engineer with a passion for frontend development, specialize React and React ecosystem. I'm love to improve product from UI,UX, ... to performance.  
+       I take pleasure in problem-solving, exploring software architecture and applying lessons learned from past experiences to prevent future issues. My primary goal is to continue learning more as I can. 
         "
         />
       </BioBox>
       <BioBox>
         <BioHeader title="The value I live by" />
-        <BioBody introduce="Courage - I solve many problem and pass through the scare to find the path with the courage." />
-        <BioBody introduce="Professional - Try to get the better and better, I'm always think how to professional in what I do and what I will do. Create value for product and for me, from this 'value' I gain more experiences." />
+        <BioBody introduce="Courage - I solve many problem and pass through my fears to find the right path with the courage." />
+        <BioBody introduce="Professionalism - Try to get the better and better, I'm always think how to professional in what I do and what I will do. Create value for product and for me, from this 'value' I gain more experiences." />
       </BioBox>
       <BioBox>
         <BioHeader title="My hobbies" />
