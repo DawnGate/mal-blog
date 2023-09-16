@@ -13,7 +13,6 @@ const Head = () => {
   return (
     <NextHead>
       {/* <meta content="IE-edge" httpEquiv="X-UA-Compatible" /> */}
-      <meta name="robots" content="follow, index" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="description" content={meta.title} />
       <meta name="author" content={meta.author} />
