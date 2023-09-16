@@ -6,7 +6,7 @@ function Robots() {
 
 export async function getServerSideProps({ res }) {
   res.setHeader('Content-Type', 'text/plain')
-  const robotsTxt = `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap.xml\nHost: ${baseUrl}
+  const robotsTxt = `User-agent: *\nAllow: /\nSitemap: ${baseUrl}/sitemap_two.xml\nHost: ${baseUrl}
   `
 
   res.write(robotsTxt)
