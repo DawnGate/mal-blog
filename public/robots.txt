@@ -1,5 +1,0 @@
-# Allow all crawlers
-User-agent: *
-Allow: /
-
-sitemap: https://mal-blog.vercel.app/sitemap2.xml
