@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-sitemap: https://blog-mal.vercel.app/sitemap-index.xml
+sitemap: https://blog-mal.vercel.app/sitemap2.xml
