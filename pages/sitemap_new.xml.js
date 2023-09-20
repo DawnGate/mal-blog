@@ -31,8 +31,7 @@ function generateSiteMap(projects, blogs) {
                 `
           })
           .join('')}
-   </urlset>
- `
+  </urlset>`
 }
 
 function SiteMap() {

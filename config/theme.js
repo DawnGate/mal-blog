@@ -21,6 +21,7 @@ const LinkTheme = {
       },
     },
     hoverCustom: {
+      cursor: 'pointer',
       _hover: {
         textDecoration: 'none',
       },

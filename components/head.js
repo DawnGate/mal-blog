@@ -4,8 +4,8 @@ const Head = () => {
   const meta = {
     title: 'Lam Nguyen Blogs',
     description: 'Introduce and sharing blogs of Lam Nguyen(kraken)',
-    image: `${process.env.NEXT_PUBLIC_HOST_URL}/assets/favicons/logo-kraken.svg`,
-    imageOg: `${process.env.NEXT_PUBLIC_HOST_URL}/assets/images/logo-kraken.jpeg`,
+    image: `${process.env.NEXT_PUBLIC_HOST_URL ?? ''}/assets/favicons/logo-kraken.svg`,
+    imageOg: `${process.env.NEXT_PUBLIC_HOST_URL ?? ''}/assets/images/logo-kraken.jpeg`,
     author: 'lam99quyen@gmail.com',
     url: process.env.NEXT_PUBLIC_HOST_URL,
   }
@@ -38,12 +38,6 @@ const Head = () => {
       <meta property="twitter:image:height" content="200" />
 
       <link rel="icon" type="image/svg+xml" href={meta.image} />
-
-      {/* using for code hight light */}
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/github-dark.min.css"
-      />
     </NextHead>
   )
 }
