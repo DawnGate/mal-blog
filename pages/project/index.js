@@ -17,12 +17,6 @@ const posts = [
     linkHref: '/project/chat-app',
     title: 'Chat App',
   },
-  {
-    imageSrc: '/assets/images/edvin-app.png',
-    imageAlt: 'Edvin app - education platform',
-    linkHref: '/project/edvin-app',
-    title: 'Edvin App',
-  },
 ]
 
 const NoPost = () => {
