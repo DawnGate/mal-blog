@@ -11,9 +11,11 @@ const Custom404 = () => {
           PAGE NOT FOUND
         </CustomText>
       </Flex>
-      <Link as={NextLink} href="/">
-        <Button>Back to homepage</Button>
-      </Link>
+      <NextLink href="/" passHref>
+        <Link>
+          <Button>Back to homepage</Button>
+        </Link>
+      </NextLink>
     </VStack>
   )
 }

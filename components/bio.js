@@ -29,14 +29,18 @@ const BioContact = () => {
   return (
     <Box textIndent={'8'} fontWeight={700}>
       <Box>
-        <Link as={NextLink} href={GITHUB_LINK} color="teal.500">
-          Github
-        </Link>
+        <NextLink href={GITHUB_LINK} passHref>
+          <Link color="teal.500" isExternal>
+            Github
+          </Link>
+        </NextLink>
       </Box>
       <Box>
-        <Link as={NextLink} href={LINKEDIN_LINK} color="teal.500">
-          Linkedin
-        </Link>
+        <NextLink href={LINKEDIN_LINK} passHref>
+          <Link color="teal.500" isExternal>
+            Linkedin
+          </Link>
+        </NextLink>
       </Box>
     </Box>
   )

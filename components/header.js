@@ -18,29 +18,29 @@ const Logo = () => {
 
 const NavBarItem = ({ title, src, isActive }) => {
   return (
-    <Link
-      as={NextLink}
-      href={src}
-      variant="hoverCustom"
-      _hover={{
-        '.box-underline': {
-          width: '100%',
-        },
-      }}
-    >
-      <Box paddingX={2} textTransform="capitalize">
-        <CustomText fontSize="xl" fontWeight={500} active={isActive}>
-          {title}
-        </CustomText>
-        <Box
-          className="box-underline"
-          transition="ease-in"
-          transitionDuration={'0.5s'}
-          borderTop="2px"
-          width={isActive ? '100%' : 0}
-        />
-      </Box>
-    </Link>
+    <NextLink href={src} passHref>
+      <Link
+        variant="hoverCustom"
+        _hover={{
+          '.box-underline': {
+            width: '100%',
+          },
+        }}
+      >
+        <Box paddingX={2} textTransform="capitalize">
+          <CustomText fontSize="xl" fontWeight={500} active={isActive}>
+            {title}
+          </CustomText>
+          <Box
+            className="box-underline"
+            transition="ease-in"
+            transitionDuration={'0.5s'}
+            borderTop="2px"
+            width={isActive ? '100%' : 0}
+          />
+        </Box>
+      </Link>
+    </NextLink>
   )
 }
 
@@ -60,9 +60,11 @@ const Header = () => {
   return (
     <Center>
       <Container display="flex" padding={2}>
-        <Link as={NextLink} href="/" variant="noUnderline">
-          <Logo />
-        </Link>
+        <NextLink href="/" passHref>
+          <Link variant="noUnderline">
+            <Logo />
+          </Link>
+        </NextLink>
         <HeaderContent currentRoute={router.asPath} />
         <IconChangeColor />
       </Container>
