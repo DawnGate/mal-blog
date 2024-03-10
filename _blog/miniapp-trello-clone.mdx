@@ -1,0 +1,57 @@
+---
+title: 'Miniapp trello clone'
+excerpt: 'Trello clone for the Every week 1 project'
+date: '2024-03-10T15:21:01+07:00'
+---
+
+# First thing first
+
+The idea I see from the Atonio, [trello-clone](https://github.com/AntonioErdeljac/next13-trello)
+
+This project same with the github project, I try to understand the code and reimplement to something can work.
+
+It make me feel that I can catch up with the trend and know more about some useful library
+
+# The technology
+
+- Nextjs (14)
+- Node (18)
+- Shadcn-ui
+- Clerk (authenticate and authorize)
+- Prisma (ORM with mongodb)
+- Splash (for image)
+- Stripe (for subscription)
+
+# The main features
+
+- Landing page
+- Authenticate (Login, Sign Up, Authorize)
+- Profile, Organization
+- Board, List, Card
+- Drag and drop
+- Subscription
+
+# Notes
+
+With nextjs the idea with actions for form, and useFormState, and useFormStatus from react 18
+bring a new way to handle action form server and client. From my view, it bring
+more actions to server
+
+Sometime nextjs bring not good Ux, the Idea for nextjs is bring good seo and action quickly for user,
+but with a minimal app sometime it bring lagging.
+
+Structure of code, the app with construct from layout, page, loading, skeleton
+structure from project:
+
+- library, third party will go into folder "lib"
+- components will seperates with shared and private
+- state management will need more (global state - zustand for modal, dialog, server state management - react-query for client component need refresh data from server )
+- handle api with route.js => sometime very useful
+- tailwind with radix-ui, shadcn for quickly setup and start
+
+And many more to learn, I will update later 😇
+
+# Demo
+
+![Demo](/assets/images/blogs/miniapp-trello-clone.png)
+_pic: Miniapp trello clone_

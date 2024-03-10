@@ -8,6 +8,7 @@ const Head = () => {
     imageOg: `${process.env.NEXT_PUBLIC_HOST_URL ?? ''}/assets/images/logo-kraken.jpeg`,
     author: 'lam99quyen@gmail.com',
     url: process.env.NEXT_PUBLIC_HOST_URL,
+    googleVerify: process.env.NEXT_PUBLIC_GOOGLE_CONSOLE_VERIFY,
   }
 
   return (
@@ -36,6 +37,8 @@ const Head = () => {
       <meta property="twitter:image:type" content="image/jpeg" />
       <meta property="twitter:image:width" content="200" />
       <meta property="twitter:image:height" content="200" />
+
+      <meta name="google-site-verification" content={meta.googleVerify} />
 
       <link rel="icon" type="image/svg+xml" href={meta.image} />
     </NextHead>
