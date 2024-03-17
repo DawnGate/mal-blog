@@ -3,36 +3,27 @@ import getAllBlog, { getAllProject } from '@/lib/api'
 const HOST_URL = process.env.NEXT_PUBLIC_HOST_URL
 
 function generateSiteMap(projects, blogs) {
+  const projectUrls = projects
+    .map((id) => {
+      return `<url><loc>${HOST_URL}/project/${id}</loc></url>`
+    })
+    .join('')
+
+  const blogUrls = blogs
+    .map((id) => {
+      return `<url><loc>${HOST_URL}/blog/${id}</loc></url>`
+    })
+    .join('')
+
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url>
-            <loc>${HOST_URL}</loc>
-        </url>
-        <url>
-            <loc>${HOST_URL}/project</loc>
-        </url>
-        ${projects
-          .map((id) => {
-            return `
-            <url>
-                <loc>${`${HOST_URL}/project/${id}`}</loc>
-            </url>`
-          })
-          .join('')}
-        <url>
-            <loc>${HOST_URL}/blog</loc>
-        </url>
-        ${blogs
-          .map((id) => {
-            return `
-                <url>
-                    <loc>${`${HOST_URL}/blog/${id}`}</loc>
-                </url>
-                `
-          })
-          .join('')}
-   </urlset>
- `
+      <url><loc>${HOST_URL}</loc></url>
+      <url><loc>${HOST_URL}/project</loc></url>
+      <url><loc>${HOST_URL}/blog</loc></url>
+      ${projectUrls}
+      ${blogUrls}
+    </urlset>
+  `
 }
 
 function SiteMap() {
