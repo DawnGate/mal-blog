@@ -1,0 +1,75 @@
+---
+title: 'Miniapp - simple ecommerce backend'
+excerpt: 'After long time, I try my self in backend but some funny occur :D'
+date: '2024-03-17T13:34:15+07:00'
+---
+
+# First thing first
+
+Thank you for Navdeep and his project [digitic](https://github.com/navdeep1676/digitic-backend)
+
+This is a project for building backend api for the ecommerce platform.
+
+Link of the completed project: https://github.com/DawnGate/relearn/tree/miniapp/mini-app/ecommerce-backend
+
+# The technology
+
+- Node (18)
+- Mongodb with mongoose
+- image handle with multer, and resize with sharp
+- Authenticate with jsonWebToken(jwt) and bcrypt
+- handling runing wiht nodemon
+- send mail with google mail and nodemail
+- handle async error with express-async-handler
+- express for backend web application
+
+# The main features
+
+- Authenticate
+- Blog
+- Admin: management
+- Product: CRUD
+- Cart: CRUD
+- Order: CRUD
+
+# Notes
+
+I choose this repository in the youtube because the view and reviews. But like tiktok, sometime it get wrong.
+
+The limited of resource about backend. I know the occur of nextjs change many thing. You can only work in nextjs project with some ORM library, you'll have application can work and happy with it.
+
+But this come with some problems about maintainable, performance, upgrade and grow. And these are reason why many app still using backend along with frontend.
+
+What I got?
+
+- First, this repo give me some concepts and ideas about how backend work, and the synchronization
+- Second, some big view for the ecommerce site work
+- And Last, is how contruct a backend project with nodejs
+
+<br />
+
+What I think this repo should?
+
+- The mongoose is not comming with good docs, so manything the origin video educate not good instruction and the code like not update and correct with the video.
+- Some problem with the security, many bugs will occur if you bring it to a live product
+- And it is a mono repo, like an old technique, the current trend is microservices
+
+<br />
+What I will learn in another miniapp - Logging and tracking, analytics example for deploy - Using some tool for performance
+tracking - How implement server and depoy it - Handle 1000 CCU (:V)
+
+# Blog and resources I read
+
+- https://www.youtube.com/watch?v=S6Yd5cPtXr4
+- https://viblo.asia/p/nodejs-toi-da-tap-tanh-tang-hieu-suat-backend-cua-ung-dung-tmdt-nhu-the-nao-vyDZOBgdKwj \
+  Notes:
+  - With commerces: management products, payment in app, tracking and analyze order, advertising, best UI/UX and **perfomance** (for thousands or millions users)
+  - Performance improve: backend settings and current technical, source code and best practice when using library or framework, database and query, caching, cron job and queue, cluster with nodejs and micro service.
+- https://viblo.asia/p/node-cache-chang-duong-ung-dung-lan-dau-cua-mot-newbie-n1j4l35GVwl
+- https://viblo.asia/p/1-ngay-lam-analytic-do-luong-ccu-theo-thoi-gian-thuc-4P856L0BZY3 \
+  Notes: Not more relative with this simple backend, but ccu will important problem when comming with real website
+
+# Demo
+
+![Demo](/assets/images/blogs/ecommerce-backend.png)
+_pic: postman_
