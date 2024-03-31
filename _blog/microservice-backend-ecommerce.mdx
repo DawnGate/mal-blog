@@ -1,0 +1,73 @@
+---
+title: 'Mini microservices backend ecommerce'
+excerpt: 'Backend microservices with simple ecommerce'
+date: '2024-03-31T16:36:14+07:00'
+---
+
+# First thing fist
+
+The idea I got from the Nicholas Canete, [ecommerce-microservices](https://github.com/nicholas-gcc/nodejs-ecommerce-microservice)
+
+Many thanks for Nicholas, but this the source not complete It take some hard time for me to understand and put the hand on improve it.
+
+I has heard many people tell about microservices, so try it for new view.
+
+Microservices:
+
+- more time for develop, maintain, test for make sure done, docker and many way to make connection and transfer data
+- easy for containerize, scale
+
+The project re create the microservice with gateway for Proxy, auth, order and product container
+
+Source code: [https://github.com/DawnGate/relearn/tree/miniapp/mini-app/microservices-backend](https://github.com/DawnGate/relearn/tree/miniapp/mini-app/microservices-backend)
+
+ci source: [https://github.com/DawnGate/relearn/tree/ci/miniapp-micro-be/mini-app/microservices-backend](https://github.com/DawnGate/relearn/tree/ci/miniapp-micro-be/mini-app/microservices-backend)
+
+# The technology
+
+- Nodejs
+- Docker
+- test(mocha, chai)
+- CI (github actions)
+- express
+- queue(pub/sub) -> rabbitmq
+- mongodb
+
+# The main features
+
+- api gateway will forward request to containers
+- auth -> store user information and authenticate request
+- order -> store order information, publish order status to product
+- product -> store product clientInformation, receive order and forward to order container through rabbitmq
+- rabbitmq -> handle pub/sub message from order and product
+- docker for containerlize instance
+- github actions -> verify code and test
+
+# Notes
+
+- container structure:
+
+  - config -> export constanst config and from enviroment
+  - model -> describe database model
+  - repository -> abstract adapter for handle interaction with model
+  - services -> handle bussness logic when interact with repository to get information from db
+  - controller -> handle request, response status and forward to services logic relative
+  - middleware -> middleware for intercept request or authorization
+  - router -> describe the routing for instance
+  - app.js -> container App class, specific construct to start, stop, and connect with other third party library
+  - utils -> abstract handle connection with other library
+  - .env -> enviroment
+  - index.js -> where file start to run with npm start
+
+- this project give ideas, not fully implement so many bug can occur during time when I get and interact with origin source
+- github actions may need config enviroment secrets, please check readme file fore more instructions
+
+# Demo
+
+![Demo-Ci](/assets/images/blogs/micro-be-ecommerce-ci.png)
+_pic: Demo ci _
+![Demo-Ci-Settings-enviroment](/assets/images/blogs/micro-be-ecommerce-ci-settings.png)
+_pic: Demo ci settings _
+
+![Demo-Postmand-Docker](/assets/images/blogs/micro-be-ecommerce-done.png)
+_pic: Demo complete with docker and postman _
