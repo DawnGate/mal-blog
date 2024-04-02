@@ -1,0 +1,51 @@
+---
+title: 'Connect postgres, pgadmin with docker in separate containers (password authentication failed)'
+excerpt: '6 hours research and how I found it'
+date: '2024-04-02T14:35:15+07:00'
+---
+
+# First thing first
+
+One day, I want to connect my current nextjs project with postgres database. I don't want install multiple things with my local 16gb ram dell laptop. :V
+
+I come to idea: Using docker and everything is single container, so -> postgres container connected with pgadmin container
+
+But not need to wait, I quickly saw a problem: pgadmin can't connect postgres, finding all internet and I still stuck with it. And luckily after 6 hours(2 hours in coffee for chilling) I've found the way to get out of: "How connect postgres with pgadmin problem in password authenticate fail for user..."
+
+# Step by step
+
+- Make sure you install docker and already have 2 image: [https://hub.docker.com/\_/postgres](https://hub.docker.com/_/postgres) and [https://hub.docker.com/r/dpage/pgadmin4](https://hub.docker.com/r/dpage/pgadmin4)
+- Currently i'm using postgres: alpine3.19 and dpage/pgadmin4:latest(Mar 7, 2024 at 6:58 pm)
+
+## STEP 1: Init containers
+
+- setup pg admin, the default setup from [https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html](https://www.pgadmin.org/docs/pgadmin4/latest/container_deployment.html). I'm using port 8080, PGADMIN_DEFAULT_EMAIL=user@domain.com, PGADMIN_DEFAULT_PASSWORD=SuperSecret
+
+  ![Pg admin setup](/assets/images/blogs/connect_postgres_pgadmin_docker/pg_admin_setup.png)
+  _pic: setup pg admin with default settings_
+
+- setup postgres, the default setup from [https://hub.docker.com/\_/postgres](https://hub.docker.com/_/postgres). I'm using port 5432, POSTGRES_PASSWORD=mysecretpassword
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/postgres_setup.png)
+_pic: setup postgres with default settings_
+
+## STEP 2: Connect pgadmin with postgres
+
+- You can see the admin panel of pgadmin in localhost:8080, enter email and password you've already setup when you create it
+- Create a new server and you get error: can't connect with localhost as hostname. Jump to google, after a short of time, you will found that you should change it to host.docker.internal -> But still get a error: FATAL: password authentication failed for user "postgres". Wait a long time with trust, update password, hash .... and still can't connect :D
+- The correct step with only ui interaction: Find the ip of postgres in docker -> connect again, just that and you done. See the images below to understand the step.
+
+| Note, because for simple setup, the username of database will "postgres" for default, and password will "mysecretpassword"
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/postgres_ip.png)
+_pic: Get ip of the postgres container_
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/postgres_authen_fail_to_correct.png)
+_pic: fail when set host as docker internal ip_
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/after_all_and_done.png)
+_pic: The result after change it to real ip_
+
+# Conclusion
+
+Some time you will take more time to think and setup. :D, Please don't like me. Thank you.

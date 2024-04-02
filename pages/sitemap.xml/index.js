@@ -11,13 +11,13 @@ function generateSiteMap(projects, blogs) {
 
   const blogUrls = blogs
     .map((id) => {
-      return `<url><loc>${HOST_URL}/blog/${id}</loc></url>`
+      return `<url><loc>${HOST_URL}/blog/${id.slug}</loc><lastmod>${id.date}</lastmod></url>`
     })
     .join('')
 
   return `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      <url><loc>${HOST_URL}</loc></url>
+      <url><loc>${HOST_URL}</loc><priority>1</priority></url>
       <url><loc>${HOST_URL}/project</loc></url>
       <url><loc>${HOST_URL}/blog</loc></url>
       ${projectUrls}
@@ -32,7 +32,7 @@ function SiteMap() {
 
 export async function getServerSideProps({ res }) {
   const projects = getAllProject()
-  const blogs = getAllBlog(['slug']).map((item) => item.slug)
+  const blogs = getAllBlog(['slug', 'date']).map((item) => item)
 
   const sitemap = generateSiteMap(projects, blogs)
 
