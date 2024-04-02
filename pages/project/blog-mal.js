@@ -8,7 +8,7 @@ const initData = {
   previewImages: [
     {
       title: 'blog mal homepage',
-      source: '/assets/images/projects/blog-mal-home-page.png',
+      source: '/assets/images/projects/blog_mal/main.png',
       description: 'Home page, the picture I take from the home page of blog project',
     },
   ],
