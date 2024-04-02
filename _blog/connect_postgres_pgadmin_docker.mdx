@@ -1,0 +1,61 @@
+---
+title: 'Connect postgres, pgadmin with docker in separate containers (password authentication failed)'
+excerpt: '6 hours research and how I found it'
+date: '2024-04-02T14:35:15+07:00'
+---
+
+# First thing first
+
+One day, I want to connect my current nextjs project with postgres database. I don't want install multiple things with my local 16gb ram dell laptop. :V
+
+I come to idea: Using docker and everything is single container, postgres container connected with pgadmin container
+
+But not need to wait, I quickly saw a problem: pgadmin can't connect postgres, finding all internet and I still stuck with it. And luckily after 6 hours(2 hours in coffee for chilling) I've found the way to get out of: "How connect postgres with pgadmin problem in password authenticate fail for user..."
+
+The problem occur because: "I've ALREADY install POSTGRESQL in locally - port 5432 has occupy"
+
+# How to solve
+
+- Make sure you install docker and already have 2 image: [https://hub.docker.com/\_/postgres](https://hub.docker.com/_/postgres) and [https://hub.docker.com/r/dpage/pgadmin4](https://hub.docker.com/r/dpage/pgadmin4)
+- Currently i'm using postgres: alpine3.19 and dpage/pgadmin4:latest(Mar 7, 2024 at 6:58 pm)
+
+## SOLUTION 1: Uninstall your local postgres
+
+- setup postgres, the default setup from [https://hub.docker.com/\_/postgres](https://hub.docker.com/_/postgres). After remove local postgres, you can using port 5432:5432, POSTGRES_PASSWORD=mysecretpassword
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/postgres_setup_keep_port.png)
+_pic: setup postgres with default settings_
+
+## SOLUTION 2: Change host port to other port
+
+- Setup your postgres container with other port, with me in this example I using port 5427:5432
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/postgres_change_other_port.png)
+_pic: change other port of postgres_
+
+![Postgres setup](/assets/images/blogs/connect_postgres_pgadmin_docker/connect_with_other_port.png)
+_pic: pgadmin connect with docker through new port_
+
+## SOLUTION 3: Connect postgres with docker ip (For fun)
+
+- I found a real ip of postgres in docker network, and using it for connect with pgadmin :V
+
+![Postgres found port](/assets/images/blogs/connect_postgres_pgadmin_docker/postgres_ip.png)
+_pic: Find the ip of the postgres container_
+
+![pg admin connect with real port](/assets/images/blogs/connect_postgres_pgadmin_docker/connect_pgadmin_with_real_ip.png)
+_pic: Connect through ip_
+
+# Conclusion
+
+What you host on docker, it in a docker big container(
+other container,
+other container,
+other container
+)
+
+It create environment inner of it docker, so connect each other should using it our ip and port.
+
+Another thing is, make sure check the port :V in your current laptop. docker can't override or tell you this port has occupy
+
+Some time you will take more time to think and setup. :D, Please don't like me. Thank you.
