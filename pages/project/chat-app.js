@@ -9,12 +9,12 @@ const initData = {
   previewImages: [
     {
       title: 'Chat app - login page',
-      source: '/assets/images/projects/chat-app-login.png',
+      source: '/assets/images/projects/chat_app/main.png',
       description: '1. Login page of chat app with basic authentication using gmail and password.',
     },
     {
       title: 'Chat app - main page',
-      source: '/assets/images/projects/chat-app-main.png',
+      source: '/assets/images/projects/chat_app/login.png',
       description: '2. View main page - after login successful, where you contact with friend and chills.',
     },
   ],
