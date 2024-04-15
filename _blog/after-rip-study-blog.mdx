@@ -1,0 +1,30 @@
+---
+title: 'Experiences of change the ui for the already running domain'
+excerpt: 'Change layout of already running domain, and some experience from it'
+date: '2024-04-15T08:51:30+07:00'
+---
+
+# First thing first
+
+After 2 week with many problem occur. I still manage to release a new blog post today.
+
+Describe about how I change the UI for the already running study blog
+
+# Introduce
+
+One friend of me want to update a layout for a blog of [study247.edu.vn](https://www.study247.edu.vn/hoi-dap/giai-bai-toan-bang-cach-lap-phuong-trinh-hoac-he-phuong-trinh-de-tri-an-khach-hang-va-kich-cau-t-a1dn2gc0z0). This is the first time, I have chance to own a domain, setting everything, previous I only working with free url provide by Vercel :V.
+
+I quickly setup and change to a new cloudflare project, setup dns, google analytics, and change owner domain system, update layout, running analytics and get TROUBLES.
+
+# The problems
+
+1. After change everything, the SEO rank dramatically drop. This problem because I change domain before I create a new ui layout => Can't kept the old urls of this website for user to access
+2. The UI layout create after 2 week, but not have a same manifest.xml file. I quickly try to find the old IP. But this config through cloudflare with a outsource company handle, this outsource is disappear now => Many urls get fail because google robot can't crawl, people leave the domain
+3. I chose some urls get most interaction and impression to recover it first, and all other urls will spending time to collect from google analytics and recover later. But another problem occur, when the new api not working correctly and sometime get timeout problem => The api provide for new blog sometime fail and -> need time to change to provider api content
+
+# Conclusion
+
+1. You should have get BACKUP plan, find all config of old system, prepare for new system (A/B testing if you can). Make sure the new system config correct and will change small thing. Need time and experience, like my case :D , the backup will the chance for you to cover your failure
+2. Always config ANALYTICS, CRASHLYTICS, LOGS for you system, this will give you a big picture first and the bugs you can't imagination why this happen.
+
+\*P/S: I need prepare for interviews, so this is a blog after 2 weeks :D
